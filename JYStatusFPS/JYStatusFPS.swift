@@ -29,7 +29,6 @@ public class JYStatusFPS: UIWindow {
     let textColor = UIColor.grayColor()
     
     var lastTimestamp : CFTimeInterval = 0
-    var memWarning: Int = 0
     
     public static func start() {
         shareInstance.displayLink.paused = false
@@ -45,7 +44,7 @@ public class JYStatusFPS: UIWindow {
                 shareInstance.backgroundColor = UIColor.clearColor()
             }
             else{
-                shareInstance.backgroundColor = UIColor.blackColor()
+                shareInstance.backgroundColor = UIColor.lightGrayColor()
             }
         }
         
@@ -64,7 +63,7 @@ public class JYStatusFPS: UIWindow {
         userInteractionEnabled = false
         
         windowLevel = UIWindowLevelStatusBar + 1
-        backgroundColor = UIColor.blackColor()
+        backgroundColor = UIColor.lightGrayColor()
         
         fpsLayer.strokeColor = fpsColor.CGColor //边缘线颜色
         fpsLayer.fillColor = UIColor.clearColor().CGColor
@@ -75,6 +74,7 @@ public class JYStatusFPS: UIWindow {
         lbl.font = UIFont(name:"Courier", size: 11)
         lbl.textColor = UIColor.grayColor()
         lbl.adjustsFontSizeToFitWidth = true
+        lbl.textAlignment = .Center
         addSubview(lbl)
         
         displayLink.paused = true
@@ -82,8 +82,6 @@ public class JYStatusFPS: UIWindow {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notifyActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notifyDeactive), name: UIApplicationWillResignActiveNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NotifymemWarning), name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
-        
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -100,9 +98,6 @@ public class JYStatusFPS: UIWindow {
         displayLink.paused = true
     }
     
-    func NotifymemWarning() {
-        memWarning += 1
-    }
     
     func display() {
         if lastTimestamp == 0 { //第一次
@@ -143,6 +138,9 @@ public class JYStatusFPS: UIWindow {
         
         fpsLayer.path = fpspath.CGPath
         
+        var avg = 0
+        if totalfc > 0 { avg = Int(round(1.0 / duration)) * fpsHistory.count / totalfc }
+        lbl.text = String(format: "%d fps ",avg)
     }
     
 
