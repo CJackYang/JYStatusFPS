@@ -5,6 +5,8 @@ JYStatusFPS
 A util to measure fps and display on statusbar
 ----------------------
 
+![image](https://github.com/GeekYong/JYStatusFPS/blob/master/example.jpg)
+
 ### Usage
 ```swift
 
