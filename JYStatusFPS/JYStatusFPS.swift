@@ -116,7 +116,8 @@ public class JYStatusFPS: UIWindow {
         if hidden && UIApplication.sharedApplication().keyWindow != nil { hidden = false} //等待 keywindow 设置完成
         
         if fpsHistory.count > historyLength { fpsHistory.removeAtIndex(0) } // 每帧一个point 当 需要 绘制的 数量大于 宽度，删除第一个（即最早的那个）
-        let fps = Int(round(displayLink.timestamp - lastTimestamp)/duration)//当前fps
+        let timestamp = (displayLink.timestamp - lastTimestamp)/duration
+        let fps = Int(round(timestamp))//当前
         fpsHistory.append(fps) //添加到fps 数组 等待 绘制
         lastTimestamp = displayLink.timestamp
         
@@ -126,13 +127,22 @@ public class JYStatusFPS: UIWindow {
         if internalCount < interval { return }
         internalCount = 0
         
+        let fpspath = UIBezierPath() //贝塞尔曲线  结合 shapeLayer 画出曲线
+        
         var x : CGFloat = 0
         var drop : Int = 0
         var totalfc : Int = 0
         for v in fpsHistory {
             totalfc += v
             drop = max(drop, v-1)
+            let y:CGFloat = min(bounds.size.height - 1,CGFloat((v - 1) * 5 + 1))
+            if x == 0.0 { fpspath.moveToPoint(CGPoint(x: 0, y: y)) }
+            fpspath.addLineToPoint(CGPoint(x: x, y: y))
+            x += 1.0 //后移一个像素
         }
+        
+        fpsLayer.path = fpspath.CGPath
+        
     }
     
 
