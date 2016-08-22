@@ -15,6 +15,7 @@
 		C1133BB01D64726D00D6370F /* JYStatusFPSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1133BAF1D64726D00D6370F /* JYStatusFPSTests.swift */; };
 		C1133BBB1D64726D00D6370F /* JYStatusFPSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1133BBA1D64726D00D6370F /* JYStatusFPSUITests.swift */; };
 		C1133BC91D66DB8500D6370F /* JYStatusFPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1133BC81D66DB8500D6370F /* JYStatusFPS.swift */; };
+		C1133BCE1D6AF0E400D6370F /* usage.m in Sources */ = {isa = PBXBuildFile; fileRef = C1133BCD1D6AF0E400D6370F /* usage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		C1133BBA1D64726D00D6370F /* JYStatusFPSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JYStatusFPSUITests.swift; sourceTree = "<group>"; };
 		C1133BBC1D64726D00D6370F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1133BC81D66DB8500D6370F /* JYStatusFPS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JYStatusFPS.swift; sourceTree = "<group>"; };
+		C1133BCB1D6AF0E400D6370F /* JYStatusFPS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JYStatusFPS-Bridging-Header.h"; sourceTree = "<group>"; };
+		C1133BCC1D6AF0E400D6370F /* usage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usage.h; sourceTree = "<group>"; };
+		C1133BCD1D6AF0E400D6370F /* usage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = usage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		C1133B991D64726D00D6370F /* JYStatusFPS */ = {
 			isa = PBXGroup;
 			children = (
+				C1133BCC1D6AF0E400D6370F /* usage.h */,
+				C1133BCD1D6AF0E400D6370F /* usage.m */,
 				C1133B9A1D64726D00D6370F /* AppDelegate.swift */,
 				C1133B9C1D64726D00D6370F /* ViewController.swift */,
 				C1133BC81D66DB8500D6370F /* JYStatusFPS.swift */,
@@ -106,6 +112,7 @@
 				C1133BA11D64726D00D6370F /* Assets.xcassets */,
 				C1133BA31D64726D00D6370F /* LaunchScreen.storyboard */,
 				C1133BA61D64726D00D6370F /* Info.plist */,
+				C1133BCB1D6AF0E400D6370F /* JYStatusFPS-Bridging-Header.h */,
 			);
 			path = JYStatusFPS;
 			sourceTree = "<group>";
@@ -262,6 +269,7 @@
 				C1133BC91D66DB8500D6370F /* JYStatusFPS.swift in Sources */,
 				C1133B9D1D64726D00D6370F /* ViewController.swift in Sources */,
 				C1133B9B1D64726D00D6370F /* AppDelegate.swift in Sources */,
+				C1133BCE1D6AF0E400D6370F /* usage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,11 +413,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JYStatusFPS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wisnuc.JYStatusFPS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JYStatusFPS/JYStatusFPS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -417,11 +428,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JYStatusFPS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wisnuc.JYStatusFPS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JYStatusFPS/JYStatusFPS-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -490,6 +503,7 @@
 				C1133BC11D64726D00D6370F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1133BC21D64726D00D6370F /* Build configuration list for PBXNativeTarget "JYStatusFPSTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +512,7 @@
 				C1133BC41D64726D00D6370F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1133BC51D64726D00D6370F /* Build configuration list for PBXNativeTarget "JYStatusFPSUITests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +521,7 @@
 				C1133BC71D64726D00D6370F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
